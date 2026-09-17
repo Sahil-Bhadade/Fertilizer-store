@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prepare My Pickup — Ganesh Beej Bhandar</title>
+<meta name="description" content="Confirm your details and send your pickup request to Ganesh Beej Bhandar over WhatsApp.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='%231E5631'/%3E%3Cpath d='M50 76V48' stroke='white' stroke-width='6'/%3E%3Cpath d='M50 48C36 48 29 35 31 23C46 23 53 35 50 48Z' fill='%23C98A2B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a href="index.html" class="brand">
+      <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="var(--color-primary)"/>
+        <circle cx="50" cy="50" r="47" fill="none" stroke="var(--color-accent)" stroke-width="3"/>
+        <path d="M50 76 V48" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        <path d="M50 48 C36 48 29 35 31 23 C46 23 53 35 50 48 Z" fill="var(--color-accent)"/>
+        <path d="M50 56 C64 56 71 43 69 31 C54 31 47 43 50 56 Z" fill="#fff" opacity=".92"/>
+        <ellipse cx="50" cy="79" rx="18" ry="4" fill="var(--color-accent)" opacity=".55"/>
+      </svg>
+      <span>
+        <span class="brand-name" data-cfg="shopName">Ganesh Beej Bhandar</span><br>
+        <span class="brand-tagline" data-cfg="shopTaglineEnglish">Seeds, Fertilizers &amp; Crop Care</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" aria-label="View pickup list">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" data-cart-count style="display:none">0</span>
+      </a>
+      <button type="button" class="icon-btn nav-toggle" aria-label="Open menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <div class="mobile-nav-panel">
+    <button type="button" class="mobile-nav-close" aria-label="Close menu">×</button>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cart.html">Pickup List</a>
+    <a href="admin.html">Shop Admin</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="cart.html">Pickup List</a> / Prepare Pickup</div>
+    <h1>Prepare My Pickup</h1>
+    <p>Add your details, then send your list to the shop on WhatsApp.</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+
+    <!-- ===================== EMPTY STATE ===================== -->
+    <div class="empty-state" id="pickup-empty" style="display:none;">
+      <span class="emoji">🛒</span>
+      <h3>Your pickup list is empty</h3>
+      <p>Add some products before preparing a pickup request.</p>
+      <a href="products.html" class="btn btn-primary">Browse Products</a>
+    </div>
+
+    <!-- ===================== REVIEW + FORM ===================== -->
+    <div id="pickup-review-wrap">
+      <div class="pickup-layout">
+        <div>
+          <div class="pickup-list-card">
+            <h3>Your Pickup List</h3>
+            <div id="pickup-items"></div>
+            <div class="summary-total" style="margin-top:14px; padding-top:14px;">
+              <span>Estimated Total</span><span id="pickup-total">₹0</span>
+            </div>
+            <p class="muted" style="font-size:.82rem; margin:8px 0 0;">This is the exact amount you'll pay via UPI below. <a href="cart.html" style="font-weight:700; color:var(--color-primary);">Edit list</a></p>
+          </div>
+        </div>
+
+        <div id="pickup-form-section">
+          <form class="form-card" id="pickup-form" novalidate>
+            <h3 style="margin-bottom:16px;">Your Details</h3>
+
+            <div class="form-group">
+              <label for="cust-name">Full Name</label>
+              <input type="text" id="cust-name" class="input" placeholder="e.g. Rahul Patil" required>
+              <div class="error-text">Please enter your name.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="cust-mobile">Mobile Number</label>
+              <input type="tel" id="cust-mobile" class="input" placeholder="10-digit mobile number" maxlength="10" required>
+              <div class="error-text">Please enter a valid 10-digit mobile number.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="cust-time">Preferred Pickup Time</label>
+              <input type="text" id="cust-time" class="input" placeholder="e.g. Today, 5:00 PM" required>
+              <div class="hint">Shop hours: <span data-cfg="hours.weekdays"></span> · <span data-cfg="hours.sunday"></span></div>
+              <div class="error-text">Please let us know when you'll come.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="cust-note">Note to Shop (optional)</label>
+              <textarea id="cust-note" class="input" rows="3" placeholder="Any special instructions..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Payment — Required Before Sending</label>
+              <div class="upi-box" id="upi-pay-box">
+                <div class="upi-box-amount">
+                  Amount to pay: <strong id="upi-amount">₹0</strong>
+                </div>
+                <a href="#" id="upi-pay-btn" class="btn btn-accent btn-block">
+                  <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                  Pay <span id="upi-amount-2">₹0</span> via UPI
+                </a>
+
+                <label class="confirm-paid-row" id="confirm-paid-row">
+                  <input type="checkbox" id="confirm-paid-checkbox" disabled>
+                  <span>I have completed the UPI payment of <strong id="upi-amount-3">₹0</strong></span>
+                </label>
+
+                <p class="hint" id="upi-status-hint">
+                  Tap <strong>"Pay via UPI"</strong> above to open your UPI app (Google Pay / PhonePe / Paytm etc.) with the amount already filled in.
+                  Once you've completed the payment, tick the box above to unlock sending your request.
+                </p>
+                <p class="hint">UPI ID: <strong data-cfg="upiId">9130262687@upi</strong> — you can also pay manually to this ID if the button doesn't open your app.</p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-whatsapp btn-lg btn-block" id="send-whatsapp-btn" disabled>
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.005c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.15.12.32.02.51-.09.19-.14.3-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.52 1.89 1.05.93 1.93 1.22 2.2 1.36.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z"/></svg>
+              Send Pickup Request on WhatsApp
+            </button>
+            <p class="muted" id="whatsapp-lock-hint" style="font-size:.78rem; text-align:center; margin-top:12px;">🔒 Complete the UPI payment above and tick the confirmation box to unlock this button.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== CONFIRMATION ===================== -->
+    <div class="confirm-wrap" id="pickup-confirm">
+      <div class="confirm-check">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2>Pickup Request Sent Successfully!</h2>
+      <p class="muted">Your request has been sent to the shop. Please visit the store at your selected pickup time and provide your Pickup ID.</p>
+      <div class="pickup-id-badge" id="confirm-pickup-id">XXXX</div>
+
+      <div class="wa-status">
+        <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+        WhatsApp message ready
+      </div>
+
+      <div class="confirm-details">
+        <h3>Pickup Summary</h3>
+        <div class="confirm-row"><span>Name</span><strong id="confirm-name"></strong></div>
+        <div class="confirm-row"><span>Pickup Time</span><strong id="confirm-time"></strong></div>
+        <div class="confirm-row"><span>Estimated Amount</span><strong id="confirm-total"></strong></div>
+        <div class="confirm-row"><span>Payment</span><strong id="confirm-payment"></strong></div>
+        <h3 style="margin-top:16px;">Items</h3>
+        <div id="confirm-items"></div>
+      </div>
+
+      <div style="margin-top:24px; display:flex; flex-direction:column; gap:12px; align-items:center;">
+        <a href="#" id="resend-whatsapp" target="_blank" rel="noopener" class="btn btn-whatsapp">
+          Didn't open? Tap to Open WhatsApp Again
+        </a>
+        <a href="index.html" class="btn btn-ghost">Back to Home</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <span>© 2026 <span data-cfg="shopName">Ganesh Beej Bhandar</span>. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="theme-switcher">
+  <button type="button" class="theme-toggle-btn" aria-label="Change theme">🎨</button>
+  <div class="theme-panel"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/products-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/main.js"></script>
+<script src="js/pickup.js"></script>
+</body>
+</html>

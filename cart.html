@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Pickup List — Ganesh Beej Bhandar</title>
+<meta name="description" content="Review the items you have selected before sending your pickup request to Ganesh Beej Bhandar.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='%231E5631'/%3E%3Cpath d='M50 76V48' stroke='white' stroke-width='6'/%3E%3Cpath d='M50 48C36 48 29 35 31 23C46 23 53 35 50 48Z' fill='%23C98A2B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a href="index.html" class="brand">
+      <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="var(--color-primary)"/>
+        <circle cx="50" cy="50" r="47" fill="none" stroke="var(--color-accent)" stroke-width="3"/>
+        <path d="M50 76 V48" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        <path d="M50 48 C36 48 29 35 31 23 C46 23 53 35 50 48 Z" fill="var(--color-accent)"/>
+        <path d="M50 56 C64 56 71 43 69 31 C54 31 47 43 50 56 Z" fill="#fff" opacity=".92"/>
+        <ellipse cx="50" cy="79" rx="18" ry="4" fill="var(--color-accent)" opacity=".55"/>
+      </svg>
+      <span>
+        <span class="brand-name" data-cfg="shopName">Ganesh Beej Bhandar</span><br>
+        <span class="brand-tagline" data-cfg="shopTaglineEnglish">Seeds, Fertilizers &amp; Crop Care</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" aria-label="View pickup list">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" data-cart-count style="display:none">0</span>
+      </a>
+      <button type="button" class="icon-btn nav-toggle" aria-label="Open menu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav">
+  <div class="mobile-nav-panel">
+    <button type="button" class="mobile-nav-close" aria-label="Close menu">×</button>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="cart.html">Pickup List</a>
+    <a href="admin.html">Shop Admin</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Pickup List</div>
+    <h1>Your Pickup List</h1>
+    <p>Check your quantities, then get it ready for pickup.</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+
+    <div id="cart-filled-view">
+      <div class="cart-layout">
+        <div class="cart-list" id="cart-list"></div>
+
+        <div class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Items</span><span id="summary-count">0</span></div>
+          <div class="summary-total"><span>Estimated Total</span><span id="summary-total">₹0</span></div>
+          <a href="pickup.html" class="btn btn-primary btn-lg btn-block">Prepare My Pickup</a>
+          <a href="products.html" class="btn btn-ghost btn-block" style="margin-top:10px;">Continue Shopping</a>
+          <div class="disclaimer-box">
+            This is the amount you'll pay via UPI on the next step, before your request is sent to the shop. If anything needs adjusting, the shop will contact you directly.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-cart" id="cart-empty-view" style="display:none;">
+      <span class="emoji">🛒</span>
+      <h3>Your pickup list is empty</h3>
+      <p class="muted">Browse our products and add what you need — we'll keep it ready for you.</p>
+      <a href="products.html" class="btn btn-primary btn-lg">Browse Products</a>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg class="brand-logo" style="width:40px;height:40px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="50" cy="50" r="47" fill="none" stroke="var(--color-accent)" stroke-width="3"/>
+            <path d="M50 76 V48" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+            <path d="M50 48 C36 48 29 35 31 23 C46 23 53 35 50 48 Z" fill="var(--color-accent)"/>
+            <path d="M50 56 C64 56 71 43 69 31 C54 31 47 43 50 56 Z" fill="#fff" opacity=".8"/>
+          </svg>
+          <span class="brand-name" data-cfg="shopName">Ganesh Beej Bhandar</span>
+        </div>
+        <p style="color:rgba(255,255,255,.66); max-width:32ch;">Your trusted local store for seeds, fertilizers, plant nutrition and crop protection in Hadgaon.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="cart.html">Pickup List</a>
+        <a href="index.html#how-it-works">How It Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a href="products.html?category=Fertilizers">Fertilizers</a>
+        <a href="products.html?category=Seeds">Seeds</a>
+        <a href="products.html?category=Plant%20Nutrition">Plant Nutrition</a>
+        <a href="products.html?category=Crop%20Protection">Crop Protection</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#" data-cfg-href="mapsUrl" target="_blank" rel="noopener">📍 <span data-cfg="address.line2">Hadgaon, Nanded</span></a>
+        <a href="#" data-cfg-href="phoneDial">📞 <span data-cfg="phoneDisplay">94049 39173</span></a>
+        <a href="#" id="footer-whatsapp">💬 Chat on WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 <span data-cfg="shopName">Ganesh Beej Bhandar</span>. All rights reserved.</span>
+      <span>Built for fast, waiting-free pickup.</span>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="float-whatsapp" aria-label="Chat on WhatsApp">
+  <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.005c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm5.8 14.13c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.15.12.32.02.51-.09.19-.14.3-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.27.71 1.17 1.52 1.89 1.05.93 1.93 1.22 2.2 1.36.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.06.11.06.63-.18 1.31z"/></svg>
+</button>
+
+<div class="theme-switcher">
+  <button type="button" class="theme-toggle-btn" aria-label="Change theme">🎨</button>
+  <div class="theme-panel"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/products-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function cartItemRowHtml(item){
+    return `
+    <div class="cart-item" data-id="${item.product.id}">
+      <div class="cart-item-img">
+        <img src="${item.product.img}" alt="${item.product.name}" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div class="cart-item-name">${item.product.name}</div>
+        <div class="cart-item-meta">${item.product.brand} • ${item.product.packSize}</div>
+        <div class="cart-item-meta">${formatRupees(item.product.price)} × ${item.qty} = <strong>${formatRupees(item.lineTotal)}</strong></div>
+      </div>
+      <div class="cart-item-actions">
+        <div class="qty-stepper">
+          <button type="button" class="qty-minus" aria-label="Decrease quantity">−</button>
+          <input type="text" inputmode="numeric" class="qty-input" value="${item.qty}" aria-label="Quantity">
+          <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
+        </div>
+        <button type="button" class="remove-link">Remove</button>
+      </div>
+    </div>`;
+  }
+
+  function renderCartPage(){
+    const items = getCartDetailed();
+    const filled = document.getElementById("cart-filled-view");
+    const empty = document.getElementById("cart-empty-view");
+
+    if(items.length === 0){
+      filled.style.display = "none";
+      empty.style.display = "block";
+      return;
+    }
+    filled.style.display = "block";
+    empty.style.display = "none";
+
+    const listEl = document.getElementById("cart-list");
+    listEl.innerHTML = items.map(cartItemRowHtml).join("");
+
+    document.getElementById("summary-count").textContent = items.reduce((s,i)=>s+i.qty,0);
+    document.getElementById("summary-total").textContent = formatRupees(getCartEstimatedTotal());
+
+    listEl.querySelectorAll(".cart-item").forEach(row => {
+      const id = row.getAttribute("data-id");
+      const input = row.querySelector(".qty-input");
+      row.querySelector(".qty-minus").addEventListener("click", () => {
+        const newQty = Math.max(1, (parseInt(input.value,10)||1) - 1);
+        setCartQty(id, newQty);
+        renderCartPage();
+      });
+      row.querySelector(".qty-plus").addEventListener("click", () => {
+        const newQty = (parseInt(input.value,10)||1) + 1;
+        setCartQty(id, newQty);
+        renderCartPage();
+      });
+      input.addEventListener("change", () => {
+        setCartQty(id, Math.max(1, parseInt(input.value,10)||1));
+        renderCartPage();
+      });
+      row.querySelector(".remove-link").addEventListener("click", () => {
+        removeFromCart(id);
+        showToast("Item removed from your pickup list");
+        renderCartPage();
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderCartPage();
+    const msg = encodeURIComponent("Hello, I would like to know more about your products at " + SITE_CONFIG.shopName + ".");
+    const url = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${msg}`;
+    const el = document.getElementById("footer-whatsapp");
+    if(el){ el.href = url; el.target = "_blank"; el.rel = "noopener"; }
+  });
+</script>
+</body>
+</html>

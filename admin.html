@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Admin — Ganesh Beej Bhandar</title>
+<meta name="description" content="Demo admin dashboard for managing pickup requests at Ganesh Beej Bhandar.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='%231E5631'/%3E%3Cpath d='M50 76V48' stroke='white' stroke-width='6'/%3E%3Cpath d='M50 48C36 48 29 35 31 23C46 23 53 35 50 48Z' fill='%23C98A2B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Mukta:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a href="index.html" class="brand">
+      <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="var(--color-primary)"/>
+        <circle cx="50" cy="50" r="47" fill="none" stroke="var(--color-accent)" stroke-width="3"/>
+        <path d="M50 76 V48" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        <path d="M50 48 C36 48 29 35 31 23 C46 23 53 35 50 48 Z" fill="var(--color-accent)"/>
+        <path d="M50 56 C64 56 71 43 69 31 C54 31 47 43 50 56 Z" fill="#fff" opacity=".92"/>
+        <ellipse cx="50" cy="79" rx="18" ry="4" fill="var(--color-accent)" opacity=".55"/>
+      </svg>
+      <span>
+        <span class="brand-name" data-cfg="shopName">Ganesh Beej Bhandar</span><br>
+        <span class="brand-tagline">Shop Admin Dashboard</span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">← Back to Site</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Admin</div>
+    <h1>Pickup Requests</h1>
+    <p>Track incoming pickup requests and update their status as you prepare each order.</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top:36px;">
+  <div class="container">
+
+    <div class="admin-note">
+      🔒 <strong>Demo dashboard.</strong> This page reads sample data stored in your browser only, so it can be built and tested without a backend. Requests you place through the site's own "Prepare My Pickup" flow will appear here automatically. For real use, connect this page to a login-protected backend/database.
+    </div>
+
+    <div class="admin-stats" id="admin-stats"></div>
+
+    <div class="admin-table-wrap">
+      <div class="admin-row head">
+        <div>Pickup ID</div>
+        <div>Customer</div>
+        <div>Items</div>
+        <div>Pickup Time</div>
+        <div>Est. Amount</div>
+        <div>Status</div>
+      </div>
+      <div id="admin-rows"></div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <span>© 2026 <span data-cfg="shopName">Ganesh Beej Bhandar</span>. All rights reserved.</span>
+      <span>Admin view — not visible to customers.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/products-data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
